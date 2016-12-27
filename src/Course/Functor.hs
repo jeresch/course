@@ -69,7 +69,7 @@ instance Functor Optional where
     (a -> b)
     -> Optional a
     -> Optional b
-  (<$>) f Empty = Empty
+  (<$>) _ Empty = Empty
   (<$>) f (Full a) = Full (f a)
 
 -- | Maps a function on the reader ((->) t) functor.
@@ -96,7 +96,7 @@ instance Functor ((->) t) where
   a
   -> f b
   -> f a
-(<$) a f = (<$>) (\b -> a) f
+(<$) a f = (<$>) (\_ -> a) f
 
 -- | Anonymous map producing unit value.
 --

@@ -76,7 +76,7 @@ headOr ::
   -> List a
   -> a
 headOr d Nil = d
-headOr _ (x :. xs) = x
+headOr _ (x :. _) = x
 
 -- | The product of the elements of a list.
 --
@@ -114,7 +114,7 @@ length ::
   List a
   -> Int
 length Nil = 0
-length (x :. xs) = 1 + length xs
+length (_ :. xs) = 1 + length xs
 
 -- | Map the given function on each element of the list.
 --
@@ -198,7 +198,7 @@ flatMap ::
   (a -> List b)
   -> List a
   -> List b
-flatMap f Nil = Nil
+flatMap _ Nil = Nil
 flatMap f (x :. xs) = f x ++ flatMap f xs
 
 -- | Flatten a list of lists to a list (again).
